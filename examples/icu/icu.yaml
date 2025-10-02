@@ -17,7 +17,7 @@ constants:
 resources:
   - beds:
       resource_type: bed
-      slots: 150
+      slots: 1000
       data_id: ICU
       plot_options:
         title: ICU
