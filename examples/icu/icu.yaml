@@ -6,18 +6,25 @@ headless: false
 # Pad naar de historische data
 data_source: "examples/icu/simulatiedata.csv"
 
-# Critical duration van patiënten in de queue voordat ze komen te overlijden
+# In onderstaande code kun je een grid definiëren om meerdere scenario's te simuleren
+batches:
+- grid:
+  - beds.slots:
+      range: [115, 215]
+      step: 25
+    
 constants:
   - critical_duration:
       A: ~
       B: 4
       C: 2
 
-# Parameters van het scenario, slots: x definieert het aantal bedden
+# Onderstaande code is niet relevant
+# Merk op: slots: x wordt overschreven door de waardes in het grid
 resources:
   - beds:
       resource_type: bed
-      slots: 1000
+      slots: 5
       data_id: ICU
       plot_options:
         title: ICU
@@ -27,7 +34,6 @@ resources:
         legend_y: beds
         secondary_y: true
 
-# Niet relevant
 queues:
   - patients_waiting:
       data_id: ICU
